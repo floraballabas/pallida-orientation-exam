@@ -1,0 +1,36 @@
+﻿@model ICollection<ExamApp.Models.Car>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+    <h1>Search</h1>
+    <form action="/search" method="get">
+        <label for="plates">Lisence plate: </label>
+        <input type="text" id="Plate" name="Plate" />
+        <div>
+            <button type="submit">Search</button>
+        </div>
+    </form>
+    <table>
+        <tr>
+            <th>Plate</th>
+            <th>Car Brand</th>
+            <th>Car Model</th>
+            <td>Color</td>
+            <td>Year</td>
+        </tr>
+        @foreach (var item in @Model)
+        {
+            <tr>
+                <td>@item.Plate</td>
+                <td>@item.Car_brand</td>
+                <td>@item.Car_model</td>
+                <td>@item.Color</td>
+                <td>@item.Year</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

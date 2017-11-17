@@ -8,9 +8,10 @@ using ExamApp.Entities;
 namespace ExamApp.Migrations
 {
     [DbContext(typeof(CarContext))]
-    partial class CarContextModelSnapshot : ModelSnapshot
+    [Migration("20171117085201_thirdmigration")]
+    partial class thirdmigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.4")
