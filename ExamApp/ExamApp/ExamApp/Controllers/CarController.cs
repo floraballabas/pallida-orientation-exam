@@ -31,7 +31,11 @@ namespace ExamApp.Controllers
         [Route("/search")]
         public IActionResult SearchResult(string plate)
         {
-            return View("Index", carRepository.GetSearchedCars(plate));
+            //if (ModelState.IsValid)
+            //{
+                return View("Index", carRepository.GetSearchedCars(plate));
+            //}
+            //return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -50,7 +54,7 @@ namespace ExamApp.Controllers
 
         [HttpGet]
         [Route("/search/{brand}")]
-        public IActionResult SearchForBrand(string brand)
+        public IActionResult SearchForBrandWithButton(string brand)
         {
             return View("Index", carRepository.GetBrand(brand));
         }

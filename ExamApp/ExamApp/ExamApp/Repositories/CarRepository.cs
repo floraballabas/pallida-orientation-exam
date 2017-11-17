@@ -3,6 +3,7 @@ using ExamApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ExamApp.Repositories
@@ -23,7 +24,21 @@ namespace ExamApp.Repositories
 
         public List<Car> GetSearchedCars(string plate)
         {
-            return carContext.Licence_Plates.Where(x => x.Plate.Contains(plate)).ToList();
+            if (CheckInputLength(plate) && CheckInputFormat(plate))
+            {
+                return carContext.Licence_Plates.Where(x => x.Plate.Contains(plate)).ToList();
+            }
+            return GetAllCars();
+        }
+
+        private bool CheckInputFormat(string plate)
+        {
+            return Regex.IsMatch(plate, @"^[a-zA-Z0-9-]*$");
+        }
+
+        private bool CheckInputLength(string plate)
+        {
+            return (plate.Length <= 7);
         }
 
         public List<Car> GetPoliceCars()
@@ -38,8 +53,7 @@ namespace ExamApp.Repositories
 
         public List<Car> GetBrand(string brand)
         {
-            string convertedBrand = brand.ToLower();
-            return carContext.Licence_Plates.Where(x => x.Car_brand.Equals(convertedBrand)).ToList();
+            return carContext.Licence_Plates.Where(x => x.Car_brand.Equals(brand)).ToList();
         }
     }
 }

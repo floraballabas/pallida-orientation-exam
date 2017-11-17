@@ -29,7 +29,12 @@
         {
             <tr>
                 <td>@item.Plate</td>
-                <td><a href="/search/brand">@item.Car_brand</a></td>
+                <td>
+                    <form action="/search/@item.Car_brand" method="get">
+                        <input type="hidden" name="Car_brand" value="@item.Car_brand" />
+                        <button type="submit">@item.Car_brand</button>
+                    </form>
+                </td>
                 <td>@item.Car_model</td>
                 <td>@item.Color</td>
                 <td>@item.Year</td>

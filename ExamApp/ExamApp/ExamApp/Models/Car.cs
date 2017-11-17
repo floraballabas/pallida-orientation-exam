@@ -9,7 +9,6 @@ namespace ExamApp.Models
     public class Car
     {
         public int Id { get; set; }
-        [MaxLength(7)]
         public string Plate { get; set; }
         public string Car_brand { get; set; }
         public string Car_model { get; set; }
