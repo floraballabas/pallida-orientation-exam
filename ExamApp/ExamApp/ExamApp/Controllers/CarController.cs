@@ -49,6 +49,13 @@ namespace ExamApp.Controllers
         }
 
         [HttpGet]
+        [Route("/search/{brand}")]
+        public IActionResult SearchForBrand(string brand)
+        {
+            return View("Index", carRepository.GetBrand(brand));
+        }
+
+        [HttpGet]
         [Route("/api/search/{brand}")]
         public IEnumerable<Car> SearchForBrandWithApi(string brand)
         { 
