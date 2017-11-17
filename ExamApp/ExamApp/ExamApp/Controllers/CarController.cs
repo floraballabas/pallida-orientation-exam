@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ExamApp.Repositories;
+using ExamApp.Models;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -45,6 +46,13 @@ namespace ExamApp.Controllers
         public IActionResult SearchDiplomatCars()
         {
             return View("Index", carRepository.GetDiplomatCars());
+        }
+
+        [HttpGet]
+        [Route("/api/search/{brand}")]
+        public IEnumerable<Car> SearchForBrandWithApi(string brand)
+        { 
+            return carRepository.GetBrand(brand);
         }
     }
 }

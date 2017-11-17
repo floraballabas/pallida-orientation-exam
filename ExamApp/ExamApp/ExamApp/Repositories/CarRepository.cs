@@ -35,5 +35,11 @@ namespace ExamApp.Repositories
         {
             return carContext.Licence_Plates.Where(x => x.Plate.StartsWith("DT")).ToList();
         }
+
+        public List<Car> GetBrand(string brand)
+        {
+            string convertedBrand = brand.ToLower();
+            return carContext.Licence_Plates.Where(x => x.Car_brand.Equals(convertedBrand)).ToList();
+        }
     }
 }

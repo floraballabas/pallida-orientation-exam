@@ -6,6 +6,8 @@
 </head>
 <body>
     <h1>Search</h1>
+    @Html.ValidationSummary()
+
     <form action="/search" method="get">
         <label for="plates">Lisence plate: </label>
         <input type="text" id="Plate" name="Plate" />
@@ -18,8 +20,8 @@
     <table>
         <tr>
             <th>Plate</th>
-            <th>Car Brand</th>
-            <th>Car Model</th>
+            <th>Brand</th>
+            <th>Model</th>
             <td>Color</td>
             <td>Year</td>
         </tr>
@@ -27,7 +29,7 @@
         {
             <tr>
                 <td>@item.Plate</td>
-                <td>@item.Car_brand</td>
+                <td><a href="/search/brand">@item.Car_brand</a></td>
                 <td>@item.Car_model</td>
                 <td>@item.Color</td>
                 <td>@item.Year</td>
