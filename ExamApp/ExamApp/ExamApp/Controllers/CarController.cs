@@ -32,5 +32,19 @@ namespace ExamApp.Controllers
         {
             return View("Index", carRepository.GetSearchedCars(plate));
         }
+
+        [HttpGet]
+        [Route("/search/police")]
+        public IActionResult SearchPoliceCars()
+        {
+            return View("Index", carRepository.GetPoliceCars());
+        }
+
+        [HttpGet]
+        [Route("/search/diplomat")]
+        public IActionResult SearchDiplomatCars()
+        {
+            return View("Index", carRepository.GetDiplomatCars());
+        }
     }
 }

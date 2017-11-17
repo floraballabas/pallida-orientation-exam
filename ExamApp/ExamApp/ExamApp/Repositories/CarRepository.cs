@@ -25,5 +25,15 @@ namespace ExamApp.Repositories
         {
             return carContext.Licence_Plates.Where(x => x.Plate.Contains(plate)).ToList();
         }
+
+        public List<Car> GetPoliceCars()
+        {
+            return carContext.Licence_Plates.Where(x => x.Plate.StartsWith("RB")).ToList();
+        }
+
+        public List<Car> GetDiplomatCars()
+        {
+            return carContext.Licence_Plates.Where(x => x.Plate.StartsWith("DT")).ToList();
+        }
     }
 }
