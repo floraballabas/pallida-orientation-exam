@@ -24,46 +24,42 @@ namespace ExamApp.Controllers
         [Route("")]
         public IActionResult Index()
         {
-            return View(carRepository.GetAllCars());
+            return View(carRepository.GetAllCarsFromDb());
         }
 
         [HttpGet]
         [Route("/search")]
         public IActionResult SearchResult(string plate)
         {
-            //if (ModelState.IsValid)
-            //{
-                return View("Index", carRepository.GetSearchedCars(plate));
-            //}
-            //return RedirectToAction("Index");
+            return View("Index", carRepository.GetSearchedCarsFromDb(plate));
         }
 
         [HttpGet]
         [Route("/search/police")]
         public IActionResult SearchPoliceCars()
         {
-            return View("Index", carRepository.GetPoliceCars());
+            return View("Index", carRepository.GetPoliceCarsFromDb());
         }
 
         [HttpGet]
         [Route("/search/diplomat")]
         public IActionResult SearchDiplomatCars()
         {
-            return View("Index", carRepository.GetDiplomatCars());
+            return View("Index", carRepository.GetDiplomatCarsFromDb());
         }
 
         [HttpGet]
         [Route("/search/{brand}")]
         public IActionResult SearchForBrandWithButton(string brand)
         {
-            return View("Index", carRepository.GetBrand(brand));
+            return View("Index", carRepository.GetBrandFromDb(brand));
         }
 
         [HttpGet]
         [Route("/api/search/{brand}")]
         public IEnumerable<Car> SearchForBrandWithApi(string brand)
-        { 
-            return carRepository.GetBrand(brand);
+        {
+            return carRepository.GetBrandFromDb(brand);
         }
     }
 }

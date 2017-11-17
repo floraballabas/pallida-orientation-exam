@@ -17,18 +17,18 @@ namespace ExamApp.Repositories
             this.carContext = carContext;
         }
 
-        public List<Car> GetAllCars()
+        public List<Car> GetAllCarsFromDb()
         {
             return carContext.Licence_Plates.ToList();
         }
 
-        public List<Car> GetSearchedCars(string plate)
+        public List<Car> GetSearchedCarsFromDb(string plate)
         {
             if (CheckInputLength(plate) && CheckInputFormat(plate))
             {
                 return carContext.Licence_Plates.Where(x => x.Plate.Contains(plate)).ToList();
             }
-            return GetAllCars();
+            return GetAllCarsFromDb();
         }
 
         private bool CheckInputFormat(string plate)
@@ -41,17 +41,17 @@ namespace ExamApp.Repositories
             return (plate.Length <= 7);
         }
 
-        public List<Car> GetPoliceCars()
+        public List<Car> GetPoliceCarsFromDb()
         {
             return carContext.Licence_Plates.Where(x => x.Plate.StartsWith("RB")).ToList();
         }
 
-        public List<Car> GetDiplomatCars()
+        public List<Car> GetDiplomatCarsFromDb()
         {
             return carContext.Licence_Plates.Where(x => x.Plate.StartsWith("DT")).ToList();
         }
 
-        public List<Car> GetBrand(string brand)
+        public List<Car> GetBrandFromDb(string brand)
         {
             return carContext.Licence_Plates.Where(x => x.Car_brand.Equals(brand)).ToList();
         }
