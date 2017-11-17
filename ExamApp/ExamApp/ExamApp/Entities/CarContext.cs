@@ -13,6 +13,6 @@ namespace ExamApp.Entities
         {
         }
 
-        public DbSet<Car> Licence_Plates { get; set; }
+        public DbSet<Car> licence_plates { get; set; }
     }
 }
